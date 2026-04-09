@@ -1,37 +1,30 @@
 # Installation Guide
 
-Bu rehber Automated Genomics Pipeline'ın kurulumunu detaylı olarak açıklar.
+Detailed installation instructions for the Automated Genomics Pipeline.
 
-## Sistem Gereksinimleri
+## System Requirements
 
 ### Operating System
 - macOS (Intel/Apple Silicon)
 - Linux (Ubuntu 18.04+, CentOS 7+)
-- Windows (WSL2 önerilir)
+- Windows (WSL2 recommended)
 
-### Disk Space
-- En az 10 GB boş disk alanı
-- Analiz sonuçları için ek alan (veri boyutuna bağlı)
+### Hardware Requirements
+- **Disk Space**: 10+ GB free space
+- **Memory**: 8+ GB RAM (16 GB+ recommended)
+- **CPU**: 4+ cores recommended for parallel processing
 
-### Memory
-- En az 8 GB RAM
-- 16 GB+ önerilir
-
-## Adım 1: Proje İndirme
+## Step 1: Clone Repository
 
 ```bash
-# Projeyi klonla veya indir
-cd /Users/yourusername/
-git clone <repository-url> genomics-pipeline
-# veya
-# ZIP dosyasını indir ve çıkart
-
-cd genomics-pipeline/
+# Clone the repository
+git clone https://github.com/ceydaakin/genomics-pipeline.git
+cd genomics-pipeline
 ```
 
-## Adım 2: Conda/Miniconda Kurulumu
+## Step 2: Install Conda/Miniconda
 
-Eğer Conda yüklü değilse:
+If Conda is not installed:
 
 ### macOS (Apple Silicon)
 ```bash
@@ -51,39 +44,39 @@ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
-Terminal'i kapatıp tekrar açın.
+Restart your terminal after installation.
 
-## Adım 3: Bioinformatics Tools Kurulumu
+## Step 3: Install Bioinformatics Tools
 
 ```bash
-# Tüm gerekli araçları otomatik kur
+# Run the automated installation script
 ./scripts/install_comprehensive_genomics_tools.sh
 ```
 
-Bu script şunları yükler:
-- BUSCO (genom kalite değerlendirmesi)
-- FastANI (ANI analizi)
-- Snippy (SNP analizi)
-- Roary (pan-genom)
-- Prokka (annotation)
-- EggNOG-mapper (fonksiyonel annotation)
-- IQ-TREE, RAxML (filogenetik ağaçlar)
-- Gerekli Python paketleri
+This script installs:
+- BUSCO (genome quality assessment)
+- FastANI (ANI analysis)
+- Snippy (SNP analysis)
+- Roary (pan-genome analysis)
+- Prokka (genome annotation)
+- EggNOG-mapper (functional annotation)
+- IQ-TREE, RAxML (phylogenetic analysis)
+- Required Python packages
 
-## Adım 4: Environment Aktivasyonu
+## Step 4: Activate Environment
 
 ```bash
 conda activate genomics-analysis-complete
 ```
 
-## Adım 5: Kurulum Doğrulama
+## Step 5: Verify Installation
 
 ```bash
-# Test scripti ile doğrula
+# Run the test suite
 python tests/test_complete_pipeline.py
 ```
 
-Başarılı kurulum sonrası göreceğiniz output:
+Expected output for successful installation:
 ```
 🧬 AUTOMATED GENOMICS PIPELINE - COMPLETE TEST SUITE
 ======================================================================
@@ -93,82 +86,91 @@ Başarılı kurulum sonrası göreceğiniz output:
 ✅ All tests completed!
 ```
 
-## Adım 6: İlk Analiz
+## Step 6: Add Your Data
 
 ```bash
-# Örnek veri ile test
-./scripts/run_genomics_analysis.sh data/fe_cs_genomics/
+# Add your genome files to the data directory
+cp your_genomes/*.fna data/fe_cs_genomics/
+```
+
+## Step 7: Run First Analysis
+
+```bash
+# Test with your data
+./scripts/run_genomics_analysis.sh
 ```
 
 ## Troubleshooting
 
-### Conda environment bulunamıyor
+### Conda Environment Issues
+
+**Environment not found:**
 ```bash
-# Environment'i manuel oluştur
+# Manually create environment
 conda create -n genomics-analysis-complete python=3.9 -y
 conda activate genomics-analysis-complete
 
-# Gerekli paketleri yükle
+# Install packages
 conda install -c bioconda -c conda-forge busco fastani snippy roary prokka eggnog-mapper -y
 ```
 
-### Araçlar PATH'te bulunamıyor
+**Tools not in PATH:**
 ```bash
-# Environment'ın aktif olduğunu kontrol et
+# Check environment is active
 echo $CONDA_DEFAULT_ENV
 
-# Manuel aktivasyon
+# Manual activation
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate genomics-analysis-complete
 ```
 
-### Permission Denied Hataları
+### Permission Errors
 ```bash
-# Script'leri executable yap
+# Make scripts executable
 chmod +x scripts/*.sh
 chmod +x tests/*.py
 ```
 
-### Disk Alanı Yetersizliği
+### Disk Space Issues
 ```bash
-# Sonuçları başka diske taşı
+# Use custom output directory
 python src/automated_genomics_pipeline.py \
     --input data/ \
     --output /path/to/large/disk/results/
 ```
 
-### Memory Hataları
+### Memory Errors
 ```bash
-# Thread sayısını azalt
+# Reduce thread count
 python src/automated_genomics_pipeline.py \
     --input data/ \
     --threads 2
 
-# Memory limitlerini ayarla
+# Set memory limits
 export OMP_NUM_THREADS=2
 ulimit -v 4000000  # 4GB limit
 ```
 
-## Avançed Configuration
+## Advanced Configuration
 
 ### Custom BUSCO Database
 ```bash
-# Lactobacillales için özel database
+# Use Lactobacillales-specific database
 python src/automated_genomics_pipeline.py \
     --input data/ \
     --busco-db lactobacillales_odb10
 ```
 
-### Configuration File
+### Configuration Files
 ```bash
-# Ayarları kaydet
+# Save settings
 python src/automated_genomics_pipeline.py \
     --input data/ \
     --threads 8 \
     --output custom_results/ \
     --config configs/my_config.json
 
-# Tekrar kullan
+# Reuse settings
 python src/automated_genomics_pipeline.py \
     --config configs/my_config.json
 ```
@@ -176,15 +178,23 @@ python src/automated_genomics_pipeline.py \
 ## Uninstallation
 
 ```bash
-# Conda environment'ı sil
+# Remove conda environment
 conda env remove -n genomics-analysis-complete
 
-# Proje klasörünü sil
+# Remove project directory
 rm -rf genomics-pipeline/
 ```
 
 ## Getting Help
 
-1. Log dosyalarını kontrol edin: `automated_genomics_pipeline.log`
-2. Issues açın: GitHub repository issues
-3. Dokumentasyonu okuyun: `docs/` klasöründe
+1. Check log files: `automated_genomics_pipeline.log`
+2. Open issues: [GitHub Repository Issues](https://github.com/ceydaakin/genomics-pipeline/issues)
+3. Read documentation: Check `docs/` directory
+4. Review examples: Check `examples/` directory
+
+## Performance Tips
+
+- Use SSD storage for better I/O performance
+- Allocate adequate memory (16GB+ for large datasets)
+- Use multiple threads on multi-core systems
+- Monitor disk space during analysis

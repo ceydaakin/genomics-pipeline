@@ -1,30 +1,30 @@
-# FE_CS Genomics Data Directory
+# Sample Genomics Data Directory
 
-Bu klasöre genom dosyalarınızı yerleştirin.
+Place your genome files in this directory for analysis.
 
-## Desteklenen Formatlar
+## Supported Formats
 - `.fna` - FASTA Nucleic Acid
-- `.fasta` - FASTA format  
+- `.fasta` - Standard FASTA format
 - `.fa` - FASTA short extension
 - `.fna.gz` - Compressed FASTA
 
-## Örnek Dosya Yapısı
+## Example File Structure
 ```
 fe_cs_genomics/
 ├── GCA_001592085.1_ASM159208v1_genomic.fna
 ├── OPSG_3_2_4_genomic.fna
 ├── GCA_000383435.1_ASM38343v1_genomic.fna
-└── [diğer genom dosyaları...]
+└── [other genome files...]
 ```
 
-## Kullanım
+## Usage
 ```bash
-# Genom dosyalarını bu klasöre kopyalayın
+# Copy genome files to this directory
 cp *.fna data/fe_cs_genomics/
 
-# Analizi çalıştırın
+# Run the analysis
 ./scripts/run_genomics_analysis.sh
 ```
 
-**Not:** Genom dosyaları repository'de yer kapladığı için .gitignore ile hariç tutulmuştur. 
-Kendi genom dosyalarınızı bu klasöre eklemeniz gerekir.
+**Note:** Genome files are excluded from the repository due to file size (.gitignore). 
+You need to add your own genome files to this directory to use the pipeline.

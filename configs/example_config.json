@@ -11,20 +11,20 @@
   "strain_names_in_plots": true,
 
   "comments": {
-    "base_dir": "Pipeline ana klasörü",
-    "data_dir": "Genom dosyalarının bulunduğu klasör",
-    "results_dir": "Analiz sonuçlarının kaydedileceği klasör",
-    "busco_database": "Ana BUSCO veritabanı (bacteria_odb10, lactobacillales_odb10, vs.)",
-    "busco_alt_database": "Alternatif BUSCO veritabanı",
-    "ani_threshold": "Aynı tür için ANI eşik değeri (%)",
-    "threads": "Kullanılacak thread sayısı",
-    "genome_extensions": "Desteklenen genom dosya uzantıları",
-    "use_strain_names": "Accession yerine suş ismi kullan",
-    "strain_names_in_plots": "Grafiklerde suş isimlerini göster"
+    "base_dir": "Pipeline main directory",
+    "data_dir": "Directory containing genome files",
+    "results_dir": "Directory where analysis results will be saved",
+    "busco_database": "Main BUSCO database (bacteria_odb10, lactobacillales_odb10, etc.)",
+    "busco_alt_database": "Alternative BUSCO database",
+    "ani_threshold": "ANI threshold for same species (%)",
+    "threads": "Number of threads to use",
+    "genome_extensions": "Supported genome file extensions",
+    "use_strain_names": "Use strain names instead of accession numbers",
+    "strain_names_in_plots": "Show strain names in plots"
   },
 
   "example_usage": {
-    "description": "Bu konfigürasyon dosyasını kullanmak için:",
+    "description": "To use this configuration file:",
     "command": "python src/automated_genomics_pipeline.py --config configs/example_config.json"
   }
 }

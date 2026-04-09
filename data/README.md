@@ -1,42 +1,48 @@
 # Data Directory
 
-Bu klasör genomics analizi için gerekli veri dosyalarını içerir.
+This directory contains the data files required for genomics analysis.
 
-## Klasör Yapısı
+## Directory Structure
 
 ```
 data/
-└── fe_cs_genomics/          # FE_CS projesi genom verileri
+└── fe_cs_genomics/          # Sample genomics project data
     ├── GCA_*.fna            # GenBank assemblies
-    ├── OPSG_*.fna           # Yerel suşlar
-    └── busco_downloads/     # BUSCO veritabanları
+    ├── OPSG_*.fna           # Local strains
+    └── README.md            # Data usage guide
 ```
 
-## Veri Formatları
+## Supported File Formats
 
-Desteklenen genom dosya formatları:
+Supported genome file formats:
 - `.fna` - FASTA Nucleic Acid
-- `.fasta` - FASTA format
+- `.fasta` - Standard FASTA format
 - `.fa` - FASTA short extension
-- `.fna.gz` - Sıkıştırılmış FASTA
+- `.fna.gz` - Compressed FASTA
 
-## Yeni Veri Ekleme
+## Adding New Data
 
-Yeni genom dosyalarını bu klasöre eklemek için:
+To add new genome files to this directory:
 
-1. Dosyaları uygun alt klasöre koyun
-2. Dosya isimlerinin accession numarası veya suş bilgisi içerdiğinden emin olun
-3. Pipeline otomatik olarak suş isimlerini çıkaracaktır
+1. Place files in appropriate subdirectory
+2. Ensure filenames contain accession numbers or strain information
+3. The pipeline will automatically extract strain names
 
-## Örnek Kullanım
+## Example Usage
 
 ```bash
-# Yeni veri seti oluştur
+# Create new dataset
 mkdir data/my_project/
 
-# Genomları ekle
+# Add genomes
 cp *.fna data/my_project/
 
-# Analizi çalıştır
+# Run analysis
 ./scripts/run_genomics_analysis.sh data/my_project/
 ```
+
+## Notes
+
+- Genome files are excluded from git repository due to size (.gitignore)
+- Add your own genome files to use the pipeline
+- Directory structure will be preserved even without genome files
