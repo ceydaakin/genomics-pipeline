@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.pytest_cache/
+
+# Analysis Results
+automated_genomics_results/
+test_results/
+test_advanced_results/
+*.log
+*.tsv
+results/
+output/
+
+# Conda/Environment files
+.conda
+environment.yml
+*.egg-info/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Large data files (keep structure but not content for repo)
+data/*/busco_results/
+data/*/busco_downloads/
+data/**/*.fna
+data/**/*.fasta
+data/**/*.fa
+data/**/*.gz
+
+# Keep data directory structure but not large files
+!data/README.md
+!data/fe_cs_genomics/README.md
+
+# Config files with sensitive info
+configs/*_private.json
+configs/local_*.json

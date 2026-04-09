@@ -1,0 +1,30 @@
+{
+  "base_dir": "/Users/ceydaakin/genomics-pipeline",
+  "data_dir": "/Users/ceydaakin/genomics-pipeline/data/fe_cs_genomics",
+  "results_dir": "/Users/ceydaakin/genomics-pipeline/automated_genomics_results",
+  "busco_database": "bacteria_odb10",
+  "busco_alt_database": "lactobacillales_odb10",
+  "ani_threshold": 95.0,
+  "threads": 4,
+  "genome_extensions": [".fna", ".fasta", ".fa", ".fna.gz"],
+  "use_strain_names": true,
+  "strain_names_in_plots": true,
+
+  "comments": {
+    "base_dir": "Pipeline ana klasörü",
+    "data_dir": "Genom dosyalarının bulunduğu klasör",
+    "results_dir": "Analiz sonuçlarının kaydedileceği klasör",
+    "busco_database": "Ana BUSCO veritabanı (bacteria_odb10, lactobacillales_odb10, vs.)",
+    "busco_alt_database": "Alternatif BUSCO veritabanı",
+    "ani_threshold": "Aynı tür için ANI eşik değeri (%)",
+    "threads": "Kullanılacak thread sayısı",
+    "genome_extensions": "Desteklenen genom dosya uzantıları",
+    "use_strain_names": "Accession yerine suş ismi kullan",
+    "strain_names_in_plots": "Grafiklerde suş isimlerini göster"
+  },
+
+  "example_usage": {
+    "description": "Bu konfigürasyon dosyasını kullanmak için:",
+    "command": "python src/automated_genomics_pipeline.py --config configs/example_config.json"
+  }
+}
