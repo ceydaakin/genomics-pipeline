@@ -169,36 +169,7 @@ python tests/test_complete_pipeline.py
 
 - [Installation Guide](docs/installation.md) - Detailed setup instructions
 - [Examples](examples/) - Usage examples and tutorials
-- [Contributing](CONTRIBUTING.md) - How to contribute to the project
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on:
-
-- Reporting bugs
-- Suggesting enhancements  
-- Submitting pull requests
-- Development setup
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🎓 Citation
-
-If you use this pipeline in your research, please cite:
-
-```
-Genomics Analysis Pipeline
-https://github.com/ceydaakin/genomics-pipeline
-```
-
-## 🆘 Support
-
-- 📫 Open an [Issue](https://github.com/ceydaakin/genomics-pipeline/issues) for bug reports
-- 💡 Start a [Discussion](https://github.com/ceydaakin/genomics-pipeline/discussions) for questions
-- 📖 Check the [Documentation](docs/) for detailed guides
-
----
-
-**Built for researchers, by researchers. Making genomics analysis accessible to everyone.** 🧬✨
